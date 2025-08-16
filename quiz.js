@@ -535,7 +535,7 @@ console.log(`
 // 在文件末尾添加：
 
 // Google Sheets数据收集集成
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwSc8_b-8kTu8oyrTkqsuJdMDmg5w2-A5S9o4fIFy2QNg0UbvH7MUbDxfZ-3tl8GE8o/exec'; // 替换为您的实际URL
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw6lW5_6Zej0cD7wyLD85FOqS1EvsE5lrKD7uBhwUzNZslBDrhLTy_UV4hn_Z-24TcT/exec'; // 替换为您的实际URL
 
 async function sendResultsToGoogleSheets(results) {
     if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
