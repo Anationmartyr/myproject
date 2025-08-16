@@ -531,3 +531,55 @@ console.log(`
 - 结果页面支持分享和下载
 - 所有数据保存在浏览器本地
 `);
+
+// 在文件末尾添加：
+
+// Google Sheets数据收集集成
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwSc8_b-8kTu8oyrTkqsuJdMDmg5w2-A5S9o4fIFy2QNg0UbvH7MUbDxfZ-3tl8GE8o/exec'; // 替换为您的实际URL
+
+async function sendResultsToGoogleSheets(results) {
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwSc8_b-8kTu8oyrTkqsuJdMDmg5w2-A5S9o4fIFy2QNg0UbvH7MUbDxfZ-3tl8GE8o/exec') {
+        console.log('Google Sheets集成未配置');
+        return;
+    }
+
+    const data = {
+        personalityType: results.type,
+        scores: results.scores,
+        answers: userAnswers,
+        completionTime: results.completionTime,
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent.substring(0, 200),
+        referrer: document.referrer || '直接访问',
+        url: window.location.href
+    };
+
+    try {
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'},
+            mode: 'cors'
+        });
+        
+        const result = await response.json();
+        console.log('✅ 测试结果已保存到Google Sheets');
+        return result.success;
+    } catch (error) {
+        console.error('❌ 数据保存失败:', error);
+        return false;
+    }
+}
+
+// 修改showResults函数，在显示结果后发送数据
+const originalShowResults = showResults;
+showResults = async function() {
+    const results = originalShowResults();
+    
+    // 异步发送数据（不影响用户体验）
+    setTimeout(() => {
+        sendResultsToGoogleSheets(results);
+    }, 1000);
+    
+    return results;
+};
