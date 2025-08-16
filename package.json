@@ -1,0 +1,32 @@
+{
+  "name": "mbti-personality-test",
+  "version": "1.0.0",
+  "description": "Professional MBTI personality type assessment tool",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "build": "echo 'Build completed - ready for deployment'",
+    "deploy": "echo 'Deploy to your preferred platform'",
+    "serve": "python -m http.server 8000"
+  },
+  "keywords": [
+    "mbti",
+    "personality-test",
+    "psychology",
+    "assessment",
+    "16-personalities"
+  ],
+  "author": "MBTI Test Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/mbti-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/mbti-test/issues"
+  },
+  "homepage": "https://your-mbti-domain.com",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

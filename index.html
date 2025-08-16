@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="专业的MBTI性格类型测评工具，通过科学的心理学问卷，帮助您深入了解自己的性格特质">
+    <meta name="keywords" content="MBTI,性格测试,心理测评,16型人格,性格分析">
+    <meta name="author" content="MBTI测评团队">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="MBTI性格类型测评 - 发现真实的自己">
+    <meta property="og:description" content="专业的MBTI性格测评，12道精准问题，立即发现您的性格类型">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-mbti-domain.com">
+    <meta property="og:image" content="https://your-mbti-domain.com/images/og-image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MBTI性格类型测评">
+    <meta name="twitter:description" content="发现您的MBTI性格类型，深入了解自己">
+    <meta name="twitter:image" content="https://your-mbti-domain.com/images/twitter-card.jpg">
+    
+    <title>MBTI性格类型测评 - 发现真实的自己</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- 添加Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_ANALYTICS_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'YOUR_ANALYTICS_ID');
+    </script>
+</head>
+<body>
+    <!-- 加载动画 -->
+    <div id="loading-screen" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>正在分析您的性格...</p>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>MBTI性格类型测评</h1>
+            <p>基于心理学理论的16型人格测试，发现真实的自己</p>
+            <div class="trust-badges">
+                <span class="badge">🔒 隐私保护</span>
+                <span class="badge">📊 科学准确</span>
+                <span class="badge">⚡ 2分钟完成</span>
+            </div>
+        </header>
+
+        <!-- 欢迎页面 -->
+        <div id="welcome-container">
+            <div class="welcome-card">
+                <h2>开始您的性格探索之旅</h2>
+                <p>本测试基于迈尔斯-布里格斯性格类型指标(MBTI)，通过12道精准问题，帮助您：</p>
+                <ul class="benefits-list">
+                    <li>✨ 了解自己的性格类型</li>
+                    <li>🎯 发现个人优势和潜力</li>
+                    <li>🤝 改善人际关系</li>
+                    <li>💼 指导职业发展方向</li>
+                </ul>
+                <button id="start-btn" class="primary-btn">开始测试</button>
+                <p class="disclaimer">测试结果仅供参考，性格类型无好坏之分</p>
+            </div>
+        </div>
+
+        <div id="quiz-container" style="display: none;">
+            <div id="question-container">
+                <div class="question-header">
+                    <span id="question-number">1</span>/12
+                    <div class="progress-info">
+                        <span id="progress-text">正在加载...</span>
+                    </div>
+                </div>
+                <div class="question-content">
+                    <h3 id="question-text">问题加载中...</h3>
+                    <div class="options">
+                        <button class="option-btn" data-value="A">
+                            <span class="option-label">A</span>
+                            <span class="option-text" id="option-a">选项A</span>
+                        </button>
+                        <button class="option-btn" data-value="B">
+                            <span class="option-label">B</span>
+                            <span class="option-text" id="option-b">选项B</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="result-container" style="display: none;">
+                <div class="result-card">
+                    <div class="result-header">
+                        <h2>您的MBTI性格类型是</h2>
+                        <button id="share-btn" class="share-btn" title="分享结果">📤</button>
+                    </div>
+                    <div class="personality-type" id="personality-type"></div>
+                    <div class="personality-name" id="personality-name"></div>
+                    <div class="personality-description" id="personality-description"></div>
+                    
+                    <div class="result-stats">
+                        <h3>维度分析</h3>
+                        <div id="dimension-chart"></div>
+                    </div>
+                    
+                    <div class="traits">
+                        <h3>核心特征</h3>
+                        <ul id="traits-list"></ul>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button id="download-btn" class="secondary-btn">下载报告</button>
+                        <button id="restart-btn" class="primary-btn">重新测试</button>
+                        <button id="share-result-btn" class="share-btn">分享结果</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="progress-bar">
+                <div id="progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分享模态框 -->
+    <div id="share-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>分享您的结果</h3>
+            <div class="share-options">
+                <button class="share-option" data-platform="wechat">微信</button>
+                <button class="share-option" data-platform="weibo">微博</button>
+                <button class="share-option" data-platform="qq">QQ</button>
+                <button class="share-option" data-platform="link">复制链接</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="questions.js"></script>
+    <script src="quiz.js"></script>
+</body>
+</html>
