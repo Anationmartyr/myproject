@@ -538,7 +538,7 @@ console.log(`
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwSc8_b-8kTu8oyrTkqsuJdMDmg5w2-A5S9o4fIFy2QNg0UbvH7MUbDxfZ-3tl8GE8o/exec'; // 替换为您的实际URL
 
 async function sendResultsToGoogleSheets(results) {
-    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwSc8_b-8kTu8oyrTkqsuJdMDmg5w2-A5S9o4fIFy2QNg0UbvH7MUbDxfZ-3tl8GE8o/exec') {
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
         console.log('Google Sheets集成未配置');
         return;
     }
